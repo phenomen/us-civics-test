@@ -5,6 +5,6 @@
 	let { children } = $props();
 </script>
 
-<div class="container mx-auto">
+<div class="container mx-auto h-svh">
 	{@render children()}
 </div>

@@ -10,7 +10,7 @@
 
 	type Question = (typeof questions)[number];
 
-	let currentQuestion = $state<Question | null>(null);
+	let currentQuestion = $state<Question | null>(questions[91]);
 
 	let correctAnswers = $state(0);
 	let incorrectAnswers = $state(0);
@@ -78,14 +78,14 @@
 </svelte:head>
 
 {#snippet item(number: number, question: string, answers: string[])}
-	<div class="flex-1">
-		<h1 class="mb-4 px-4 text-xl font-bold md:text-2xl">
+	<div class="mx-4 flex flex-1 flex-col space-y-4 overflow-y-auto rounded-md bg-white px-2 py-4">
+		<h1 class="px-4 text-xl font-bold md:text-2xl">
 			<span class="text-gray-300">{number}.</span>
 			{question}
 		</h1>
 		<div>
 			{#if answerVisible}
-				<ul class="list-disc space-y-2 pr-4 pl-8">
+				<ul class="list-disc space-y-1 pr-4 pl-8 text-lg">
 					{#each answers as answer}
 						<li>{answer}</li>
 					{/each}
@@ -99,8 +99,8 @@
 	</div>
 {/snippet}
 
-<div class="mx-auto flex h-screen w-full max-w-xl flex-col gap-2 py-2 md:gap-4">
-	<div class="grid grid-cols-2 gap-2 p-2 text-center md:gap-4">
+<div class="mx-auto flex h-full w-full max-w-xl flex-col gap-2">
+	<div class="grid grid-cols-2 gap-2 px-4 py-2 text-center md:gap-4">
 		<div class="bg-success/10 rounded-lg p-4">
 			<p class="text-success text-sm font-bold">Correct</p>
 			<p class="text-success text-3xl font-bold">{correctAnswers}</p>
@@ -112,13 +112,15 @@
 	</div>
 
 	{#if answeredAll}
-		<div class="flex-1">
+		<div class="flex-1 px-4">
 			<p class="text-center text-2xl font-bold">
 				{#if correctAnswers >= 6}
-					You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.
+					You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.<br
+					/><br />
 					<span class="text-success">You are now ready to take the real test!</span>
 				{:else}
-					You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.
+					You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.<br
+					/><br />
 					<span class="text-error">You need to practice more.</span>
 				{/if}
 			</p>
@@ -126,8 +128,6 @@
 	{:else if currentQuestion}
 		{@render item(currentQuestion.n, currentQuestion.q, currentQuestion.a)}
 	{/if}
-
-	<Divider px="4" />
 
 	<div class="flex flex-col">
 		<Button
