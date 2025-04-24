@@ -73,7 +73,7 @@
 	<title>US Civics Test 2025 | Quiz App</title>
 	<meta
 		name="description"
-		content="A quiz app to practice Civics part of the US Naturalization Test"
+		content="A quiz app to practice the Civics part of the US Naturalization Test"
 	/>
 </svelte:head>
 
@@ -85,7 +85,7 @@
 		</h1>
 		<div>
 			{#if answerVisible}
-				<ul class="list-disc space-y-2 pl-8 pr-4">
+				<ul class="list-disc space-y-2 pr-4 pl-8">
 					{#each answers as answer}
 						<li>{answer}</li>
 					{/each}
