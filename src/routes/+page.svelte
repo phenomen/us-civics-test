@@ -70,10 +70,10 @@
 </script>
 
 <svelte:head>
-	<title>US Civics Test 2025 | Quiz App</title>
+	<title>US Civics Test 2025 | Practice App</title>
 	<meta
 		name="description"
-		content="A quiz app to practice the Civics part of the US Naturalization Test"
+		content="A practice app for the Civics part of the US Naturalization Test using USCIS 2025 Study Guide"
 	/>
 </svelte:head>
 
@@ -146,4 +146,11 @@
 
 		<Button onclick={reset} icon={{ name: 'lucide-rotate-ccw' }}>Reset</Button>
 	</div>
+
+	<footer class="px-4 py-2 text-center text-xs text-gray-500">
+		This app is not affiliated with USCIS. Please use it for practice purposes only.<br />
+		<a href="https://github.com/phenomen/us-civics-test" class="underline">Open source</a>
+		by
+		<span class="font-bold">@phenomen</span>
+	</footer>
 </div>

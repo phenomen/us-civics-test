@@ -1,8 +1,8 @@
-# US Civics Test 2025 | Quiz App
+# US Civics Test 2025 | Practice App
 
 https://us-civics-test.vercel.app
 
-A quiz app to practice the Civics part of the US Naturalization Test.
+A practice app to prepare for the Civics part of the US Naturalization Test using USCIS 2025 Study Guide.
 
 Optimized for mobile devices.
 
