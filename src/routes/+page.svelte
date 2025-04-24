@@ -147,10 +147,7 @@
 		<Button onclick={reset} icon={{ name: 'lucide-rotate-ccw' }}>Reset</Button>
 	</div>
 
-	<footer class="px-4 py-2 text-center text-xs text-gray-500">
-		This app is not affiliated with USCIS. Please use it for practice purposes only.<br />
-		<a href="https://github.com/phenomen/us-civics-test" class="underline">Open source</a>
-		by
-		<span class="font-bold">@phenomen</span>
+	<footer class="px-4 py-1.5 text-center text-xs text-gray-500">
+		This app is not affiliated with USCIS.
 	</footer>
 </div>
