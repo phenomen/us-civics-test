@@ -10,7 +10,7 @@
 
 	type Question = (typeof questions)[number];
 
-	let currentQuestion = $state<Question | null>(questions[91]);
+	let currentQuestion = $state<Question | null>(null);
 
 	let correctAnswers = $state(0);
 	let incorrectAnswers = $state(0);
