@@ -61,7 +61,6 @@
 	--color-gray-950: oklch(0.159 0 0);
 	--color-transparent: transparent;
 }
-@source "../node_modules/stdf/**/*.svelte";
 
 @theme {
 	--font-sans:
@@ -70,7 +69,23 @@
 }
 
 @layer base {
-	button:not(:disabled),
+	button.button {
+		@apply flex w-full items-center justify-center space-x-1 rounded-sm px-2 py-2.5;
+
+		&.success {
+			@apply bg-success hover:bg-success/80 text-white;
+		}
+
+		&.error {
+			@apply bg-error hover:bg-error/80 text-white;
+		}
+
+		&.default {
+			@apply bg-info hover:bg-info/80 text-white;
+		}
+	}
+
+	button.button:not(:disabled),
 	[role='button']:not(:disabled) {
 		cursor: pointer;
 		font-weight: 500;

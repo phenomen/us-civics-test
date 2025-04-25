@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
-	import { Button, Divider } from 'stdf';
+	import { CheckIcon, XIcon, RotateCcwIcon, EyeIcon } from '@lucide/svelte';
 
 	let { data }: PageProps = $props();
 
@@ -78,8 +78,8 @@
 </svelte:head>
 
 {#snippet item(number: number, question: string, answers: string[])}
-	<div class="mx-4 flex flex-1 flex-col space-y-4 overflow-y-auto rounded-md bg-white px-2 py-4">
-		<h1 class="px-4 text-xl font-bold md:text-2xl">
+	<div class="flex flex-1 flex-col space-y-4 overflow-y-auto rounded-md bg-white p-4">
+		<h1 class="text-xl font-bold md:text-2xl">
 			<span class="text-gray-300">{number}.</span>
 			{question}
 		</h1>
@@ -91,16 +91,16 @@
 					{/each}
 				</ul>
 			{:else}
-				<Button fill="lineTheme" line="dashed" onclick={showAnswer} icon={{ name: 'lucide-eye' }}
-					>Show Answer</Button
+				<button onclick={showAnswer} class="button hover:text-primary border border-dashed"
+					><EyeIcon /><span>Show Answer</span></button
 				>
 			{/if}
 		</div>
 	</div>
 {/snippet}
 
-<div class="mx-auto flex h-full w-full max-w-xl flex-col gap-2">
-	<div class="grid grid-cols-2 gap-2 px-4 py-2 text-center md:gap-4">
+<div class="mx-auto flex h-full w-full max-w-xl flex-col gap-4 pt-2">
+	<div class="grid grid-cols-2 gap-2 text-center md:gap-4">
 		<div class="bg-success/10 rounded-lg p-4">
 			<p class="text-success text-sm font-bold">Correct</p>
 			<p class="text-success text-3xl font-bold">{correctAnswers}</p>
@@ -112,12 +112,12 @@
 	</div>
 
 	{#if answeredAll}
-		<div class="flex-1 px-4">
+		<div class="flex-1">
 			<p class="text-center text-2xl font-bold">
 				{#if correctAnswers >= 6}
 					You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.<br
 					/><br />
-					<span class="text-success">You are now ready to take the real test!</span>
+					<span class="text-success">Good job!</span>
 				{:else}
 					You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.<br
 					/><br />
@@ -129,25 +129,19 @@
 		{@render item(currentQuestion.n, currentQuestion.q, currentQuestion.a)}
 	{/if}
 
-	<div class="flex flex-col">
-		<Button
-			onclick={handleCorrect}
-			icon={{ name: 'lucide-check' }}
-			state="success"
-			disabled={answeredAll}>Correct</Button
+	<div class="flex flex-col space-y-2">
+		<button onclick={handleCorrect} class="button success" disabled={answeredAll}
+			><CheckIcon /><span>Correct</span></button
 		>
 
-		<Button
-			onclick={handleIncorrect}
-			icon={{ name: 'lucide-x' }}
-			state="error"
-			disabled={answeredAll}>Incorrect</Button
+		<button onclick={handleIncorrect} class="button error" disabled={answeredAll}
+			><XIcon /><span>Incorrect</span></button
 		>
 
-		<Button onclick={reset} icon={{ name: 'lucide-rotate-ccw' }}>Reset</Button>
+		<button onclick={reset} class="button default"><RotateCcwIcon /><span>Reset</span></button>
 	</div>
 
-	<footer class="px-4 py-1.5 text-center text-xs text-gray-500">
+	<footer class="py-1.5 text-center text-xs text-gray-500">
 		This app is not affiliated with USCIS.
 	</footer>
 </div>
