@@ -99,7 +99,7 @@
 	</div>
 {/snippet}
 
-<div class="mx-auto flex h-full w-full max-w-xl flex-col gap-4 pt-2">
+<div class="mx-auto flex h-full w-full max-w-xl flex-col gap-4 px-2 pt-2 sm:px-0">
 	<div class="grid grid-cols-2 gap-2 text-center md:gap-4">
 		<div class="bg-success/10 rounded-lg p-4">
 			<p class="text-success text-sm font-bold">Correct</p>
