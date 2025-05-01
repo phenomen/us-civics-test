@@ -78,56 +78,56 @@
 </svelte:head>
 
 {#snippet item(number: number, question: string, answers: string[])}
-	<div class="flex flex-1 flex-col space-y-4 overflow-y-auto rounded-md bg-white p-4">
-		<h1 class="text-xl font-bold md:text-2xl">
-			<span class="text-gray-300">{number}.</span>
-			{question}
-		</h1>
-		<div>
-			{#if answerVisible}
-				<ul class="list-disc space-y-1 pr-4 pl-8 text-lg">
-					{#each answers as answer}
-						<li>{answer}</li>
-					{/each}
-				</ul>
-			{:else}
-				<button onclick={showAnswer} class="button hover:text-primary border border-dashed"
-					><EyeIcon /><span>Show Answer</span></button
-				>
-			{/if}
-		</div>
+	<h1 class="text-xl font-bold md:text-2xl">
+		<span class="text-muted-foreground">{number}.</span>
+		{question}
+	</h1>
+	<div>
+		{#if answerVisible}
+			<ul class="list-disc space-y-1 pr-4 pl-8 text-lg">
+				{#each answers as answer}
+					<li>{answer}</li>
+				{/each}
+			</ul>
+		{:else}
+			<button onclick={showAnswer} class="button hover:text-primary border border-dashed"
+				><EyeIcon /><span>Show Answer</span></button
+			>
+		{/if}
 	</div>
 {/snippet}
 
 <div class="mx-auto flex h-full w-full max-w-xl flex-col gap-4 px-2 pt-2 sm:px-0">
 	<div class="grid grid-cols-2 gap-2 text-center md:gap-4">
-		<div class="bg-success/10 rounded-lg p-4">
-			<p class="text-success text-sm font-bold">Correct</p>
-			<p class="text-success text-3xl font-bold">{correctAnswers}</p>
+		<div class="rounded-lg bg-emerald-100 p-4">
+			<p class="text-sm font-bold text-emerald-600">Correct</p>
+			<p class="text-3xl font-bold text-emerald-600">{correctAnswers}</p>
 		</div>
-		<div class="bg-error/10 rounded-lg p-4">
-			<p class="text-error text-sm font-bold">Incorrect</p>
-			<p class="text-error text-3xl font-bold">{incorrectAnswers}</p>
+		<div class="rounded-lg bg-red-100 p-4">
+			<p class="text-sm font-bold text-red-600">Incorrect</p>
+			<p class="text-3xl font-bold text-red-600">{incorrectAnswers}</p>
 		</div>
 	</div>
 
-	{#if answeredAll}
-		<div class="flex-1">
-			<p class="text-center text-2xl font-bold">
-				{#if correctAnswers >= 6}
-					You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.<br
-					/><br />
-					<span class="text-success">Good job!</span>
-				{:else}
-					You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.<br
-					/><br />
-					<span class="text-error">You need to practice more.</span>
-				{/if}
-			</p>
-		</div>
-	{:else if currentQuestion}
-		{@render item(currentQuestion.n, currentQuestion.q, currentQuestion.a)}
-	{/if}
+	<div class="flex flex-1 flex-col space-y-4 overflow-y-auto rounded-md bg-white p-4">
+		{#if answeredAll}
+			<div class="flex-1">
+				<p class="text-center text-2xl font-bold">
+					{#if correctAnswers >= 6}
+						You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.<br
+						/><br />
+						<span class="text-emerald-600">Good job!</span>
+					{:else}
+						You have answered {correctAnswers} out of {testQuestionLimit} questions correctly.<br
+						/><br />
+						<span class="text-red-600">You need to practice more.</span>
+					{/if}
+				</p>
+			</div>
+		{:else if currentQuestion}
+			{@render item(currentQuestion.n, currentQuestion.q, currentQuestion.a)}
+		{/if}
+	</div>
 
 	<div class="flex flex-col space-y-2">
 		<button onclick={handleCorrect} class="button success" disabled={answeredAll}
@@ -141,7 +141,7 @@
 		<button onclick={reset} class="button default"><RotateCcwIcon /><span>Reset</span></button>
 	</div>
 
-	<footer class="py-1.5 text-center text-xs text-gray-500">
+	<footer class="text-muted-foreground py-1.5 text-center text-xs">
 		This app is not affiliated with USCIS.
 	</footer>
 </div>
